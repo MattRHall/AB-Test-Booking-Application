@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import scipy.stats
 import math
+import numpy as np
 
 class AB_test():
 
@@ -33,6 +34,20 @@ class AB_test():
         if save_fig:
             plt.savefig("feature_analysis.png")
         plt.show()
+
+    def dep_feature_analysis(self, variant_control, features = []):
+
+        for feature in features:
+            statistics = {'mean':[], 'median':[], '25th percentile': [], '75th percentile': []}
+            for test in self.dataset[variant_control].unique():
+                statistics["mean"].append(self.dataset[self.dataset[variant_control] == test][feature].mean())
+                statistics["median"].append(self.dataset[self.dataset[variant_control] == test][feature].median())
+                statistics['25th percentile'].append(np.percentile(self.dataset[self.dataset[variant_control] == test][feature], 25))
+                statistics['75th percentile'].append(np.percentile(self.dataset[self.dataset[variant_control] == test][feature], 75))
+            print(f'Statistics for feature: {feature}: ')
+            print(pd.DataFrame(statistics))
+            print("<--------------------------------------------------------->")
+
 
     def one_tail_binomial_AB_test(self, variant_control, control_num, variant_test):
 
