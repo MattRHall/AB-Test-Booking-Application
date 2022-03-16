@@ -4,7 +4,7 @@
 AB Testing is used to assess whether a change in a system has led to an improvement. This project looks at the result of an A/B test to see if some changes should be made permanent. Two changes were analyzed (1 and 2) against a control variant (0).  
 
 ## Purpose
-The purpose of this project is to experiment with an A/B test dataset, and create some reusable code if this task is encountered.
+The purpose of this project is to experiment with an A/B test dataset, and create some reusable code if this task is encountered again.
 
 ## Independent Features
 The key independent features are shown below. In this A/B test these features should be unchanged across the test variants. For example, we shouldn't expect to see a change in the 'device' type distribution across test variants (this might influence the results). The AB_test class plots the distribution of these features (for each test variant) to see if there is any change.
